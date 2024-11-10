@@ -1,18 +1,19 @@
 import { Controller, Get } from '@nestjs/common';
-import { renderToString } from 'react-dom/server';
+import { renderToStaticMarkup, renderToString } from 'react-dom/server';
 import Root from '../view/pages/root';
+import { createElement } from 'react';
 
 @Controller('/')
 export class RootController {
   @Get()
-  getHello(): string {
+  getHello() {
     const date = new Date();
 
     const props = {
       renderDateIso: date.toISOString(),
     };
 
-    const reactHtml = renderToString(Root(props));
+    const reactHtml = renderToString(createElement(Root, props));
 
     return `
         <!DOCTYPE html>

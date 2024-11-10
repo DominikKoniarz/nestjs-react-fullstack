@@ -9,4 +9,4 @@ declare global {
 
 const initialProps = window.__INITIAL_PROPS__ as any;
 
-hydrateRoot(document.getElementById('root')!, Page(initialProps));
+hydrateRoot(document.getElementById('root')!, <Page {...initialProps} />);

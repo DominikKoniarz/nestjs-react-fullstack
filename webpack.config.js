@@ -17,7 +17,7 @@ const getPageEntries = () => {
 module.exports = {
   entry: {
     ...getPageEntries(),
-    runtime: path.resolve(__dirname, 'src/view/runtime.ts'),
+    runtime: path.resolve(__dirname, 'src/view/runtime.tsx'),
   },
   output: {
     path: path.resolve(__dirname, 'public'),
@@ -41,7 +41,7 @@ module.exports = {
         include: [
           path.resolve(__dirname, 'src/view/components'),
           path.resolve(__dirname, 'src/view/pages'),
-          path.resolve(__dirname, 'src/view/runtime.ts'),
+          path.resolve(__dirname, 'src/view/runtime.tsx'),
         ],
         loader: 'ts-loader',
       },
@@ -57,4 +57,5 @@ module.exports = {
   ],
   mode: 'development',
   devtool: 'source-map',
+  target: 'web',
 };
