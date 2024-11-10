@@ -1,15 +1,18 @@
 // import { useState } from 'react';
 import Header from '../components/Header';
 
-export default function Page() {
-  const date = new Date();
-  console.log('xdxd', date.toISOString());
+type Props = {
+  renderDateIso: string;
+};
+
+export default function Page({ renderDateIso }: Props) {
+  console.log('xdxd', renderDateIso);
   //   const [test, setTest] = useState(null);
 
   return (
     <div className="xdxd 123">
       <Header />
-      <p>Server side rendered at xdxdxd</p>
+      <p>Server side rendered at: {renderDateIso}</p>
     </div>
   );
 }

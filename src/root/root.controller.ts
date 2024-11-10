@@ -6,7 +6,11 @@ import Root from '../view/pages/root';
 export class RootController {
   @Get()
   getHello(): string {
-    const reactHtml = renderToString(Root());
+    const date = new Date();
+
+    const reactHtml = renderToString(
+      Root({ renderDateIso: date.toISOString() }),
+    );
 
     return `
         <!DOCTYPE html>
