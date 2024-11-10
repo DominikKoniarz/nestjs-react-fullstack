@@ -1,5 +1,8 @@
 import { Controller, Get } from '@nestjs/common';
-import { renderToStaticMarkup, renderToString } from 'react-dom/server';
+import {
+  //   renderToStaticMarkup, // hydration does not work with this
+  renderToString,
+} from 'react-dom/server';
 import Root from '../view/pages/root';
 import { createElement } from 'react';
 

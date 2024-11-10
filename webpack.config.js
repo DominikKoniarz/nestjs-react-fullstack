@@ -24,6 +24,11 @@ module.exports = {
     filename: '[name].bundle.js',
     clean: true,
   },
+  //   optimization: {
+  //     splitChunks: {
+  //       chunks: 'all', // To oznacza, że Webpack będzie dzielił kod ze wszystkich chunków
+  //     },
+  //   },
   module: {
     rules: [
       {
