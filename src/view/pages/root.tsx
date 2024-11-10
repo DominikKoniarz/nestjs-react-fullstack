@@ -18,7 +18,8 @@ export default function Page({ renderDateIso }: Props) {
       <Header pageName="Home" />
       <p>Server side rendered at: {renderDateIso}</p>
       <p>Count: {count}</p>
-      <button onClick={() => setCount(count + 1)}>Click me</button>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <button onClick={() => setCount(count - 1)}>Decrement</button>
     </div>
   );
 }
