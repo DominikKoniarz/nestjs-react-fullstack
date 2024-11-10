@@ -11,7 +11,7 @@ export default function Page({ renderDateIso }: Props) {
 
   return (
     <div className="xdxd 123">
-      <Header />
+      <Header pageName="Home" />
       <p>Server side rendered at: {renderDateIso}</p>
     </div>
   );

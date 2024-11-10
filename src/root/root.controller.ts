@@ -8,9 +8,11 @@ export class RootController {
   getHello(): string {
     const date = new Date();
 
-    const reactHtml = renderToString(
-      Root({ renderDateIso: date.toISOString() }),
-    );
+    const props = {
+      renderDateIso: date.toISOString(),
+    };
+
+    const reactHtml = renderToString(Root(props));
 
     return `
         <!DOCTYPE html>
@@ -23,6 +25,9 @@ export class RootController {
             <body>
             <div id="root">${reactHtml}</div>
             </body>
+            <script>
+            window.__INITIAL_PROPS__ = ${JSON.stringify(props)};
+            </script>
         </html>
         `;
   }

@@ -1,7 +1,12 @@
 import { hydrateRoot } from 'react-dom/client';
 import Page from './pages/root';
 
-hydrateRoot(
-  document.getElementById('root')!,
-  Page({ renderDateIso: '2021-09-01T00:00:00.000Z' }),
-);
+declare global {
+  interface Window {
+    __INITIAL_PROPS__: any;
+  }
+}
+
+const initialProps = window.__INITIAL_PROPS__ as any;
+
+hydrateRoot(document.getElementById('root')!, Page(initialProps));
