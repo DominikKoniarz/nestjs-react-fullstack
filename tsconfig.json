@@ -20,6 +20,6 @@
     "noFallthroughCasesInSwitch": true,
     "types": ["node", "react", "react-dom"]
   },
-  "exclude": ["node_modules", "dist", "test", "**/*.spec.ts", "src/view"],
-  "include": ["src/**/*.ts"]
+  "exclude": ["node_modules", "dist", "test", "**/*.spec.ts"],
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
 }
