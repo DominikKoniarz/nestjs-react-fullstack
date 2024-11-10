@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "ES2021",
-    "moduleResolution": "node",
-    "lib": ["es2021"],
+    "target": "ES6",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "lib": ["es2021", "dom", "es2018"],
     "declaration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -18,8 +18,8 @@
     "strictBindCallApply": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "types": ["node"]
+    "types": ["node", "react", "react-dom"]
   },
-  "exclude": ["node_modules", "dist", "test", "**/*.spec.ts", "view"],
+  "exclude": ["node_modules", "dist", "test", "**/*.spec.ts", "src/view"],
   "include": ["src/**/*.ts"]
 }

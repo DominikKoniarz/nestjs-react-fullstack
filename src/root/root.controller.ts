@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { renderToString } from 'react-dom/server';
-import Page from '../../view/page';
+import Page from '../view/page';
 
 @Controller('/')
 export class RootController {
