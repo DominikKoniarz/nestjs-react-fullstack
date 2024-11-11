@@ -7,7 +7,7 @@ type Props = {
 export default function Header({ pageName }: Props) {
   useEffect(() => {
     const logEvery1Second = setInterval(() => {
-      console.log('Header component mounted');
+      console.log('Log from Header component');
     }, 1000);
 
     return () => {

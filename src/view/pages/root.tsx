@@ -5,10 +5,11 @@ import Header from '../components/Header';
 
 type Props = {
   renderDateIso: string;
+  randomCount: number;
 };
 
-export default function Page({ renderDateIso }: Props) {
-  const [count, setCount] = useState(0);
+export default function Page({ renderDateIso, randomCount }: Props) {
+  const [count, setCount] = useState(randomCount);
 
   console.log('renderDateIso', renderDateIso);
   console.log('count', count);

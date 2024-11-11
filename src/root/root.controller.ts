@@ -1,38 +1,32 @@
-import { Controller, Get } from '@nestjs/common';
-import {
-  //   renderToStaticMarkup, // hydration does not work with this
-  renderToString,
-} from 'react-dom/server';
+import { Controller, Get, Res } from '@nestjs/common';
+import { renderToPipeableStream } from 'react-dom/server';
 import Root from '../view/pages/root';
 import { createElement } from 'react';
+import { Response } from 'express';
+import Base from 'src/view/Base';
 
 @Controller('/')
 export class RootController {
   @Get()
-  getHello() {
+  async getHello(@Res() res: Response) {
     const date = new Date();
 
     const props = {
+      randomCount: Math.floor(Math.random() * 10),
       renderDateIso: date.toISOString(),
     };
 
-    const reactHtml = renderToString(createElement(Root, props));
-
-    return `
-        <!DOCTYPE html>
-        <html>
-            <head>
-            <title>React SSR</title>
-            <script src="/public/runtime.bundle.js" defer></script>
-            <script src="/public/root.bundle.js" defer></script>
-            </head>
-            <body>
-            <div id="root">${reactHtml}</div>
-            </body>
-            <script>
-            window.__INITIAL_PROPS__ = ${JSON.stringify(props)};
-            </script>
-        </html>
-        `;
+    const { pipe } = renderToPipeableStream(
+      Base({ children: createElement(Root, props) }),
+      {
+        bootstrapScripts: ['/public/runtime.bundle.js'],
+        bootstrapScriptContent:
+          'window.__INITIAL_PROPS__ = ' + JSON.stringify(props),
+        onShellReady() {
+          res.setHeader('content-type', 'text/html');
+          pipe(res);
+        },
+      },
+    );
   }
 }
